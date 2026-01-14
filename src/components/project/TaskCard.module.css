@@ -1,0 +1,165 @@
+.card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  transition: all var(--transition-fast);
+}
+
+.card:hover {
+  border-color: var(--border-secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+}
+
+.title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+  margin: 0;
+  flex: 1;
+}
+
+.actions {
+  display: flex;
+  gap: var(--spacing-xs);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.card:hover .actions {
+  opacity: 1;
+}
+
+.actionButton {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.actionButton:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.actionButton svg {
+  width: 14px;
+  height: 14px;
+}
+
+.deleteButton:hover {
+  background-color: var(--danger-bg);
+  color: var(--danger);
+}
+
+.description {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: var(--line-height-normal);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+}
+
+.dueDate {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+}
+
+.dueDate svg {
+  width: 12px;
+  height: 12px;
+}
+
+.dueDate.on_track {
+  color: var(--success);
+}
+
+.dueDate.at_risk {
+  color: var(--warning);
+}
+
+.dueDate.delayed {
+  color: var(--danger);
+}
+
+.daysLeft {
+  opacity: 0.8;
+}
+
+.completedDate {
+  color: var(--success);
+}
+
+.completedDate svg {
+  color: var(--success);
+}
+
+.moveActions {
+  display: flex;
+  gap: var(--spacing-xs);
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--border-secondary);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.card:hover .moveActions {
+  opacity: 1;
+}
+
+.moveButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.moveButton:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.moveButton svg {
+  width: 12px;
+  height: 12px;
+}
+
+.completeButton:hover {
+  background-color: var(--success-bg);
+  color: var(--success);
+}

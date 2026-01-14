@@ -1,0 +1,128 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+  min-height: 500px;
+}
+
+@media (max-width: 1200px) {
+  .board {
+    grid-template-columns: 1fr;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-tertiary);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  min-height: 400px;
+}
+
+.columnHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md);
+  border-bottom: 2px solid;
+  flex-shrink: 0;
+}
+
+.columnHeader.todo {
+  border-color: var(--kanban-todo);
+  background-color: var(--kanban-todo-bg);
+}
+
+.columnHeader.in_progress {
+  border-color: var(--kanban-progress);
+  background-color: var(--kanban-progress-bg);
+}
+
+.columnHeader.completed {
+  border-color: var(--kanban-completed);
+  background-color: var(--kanban-completed-bg);
+}
+
+.columnTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.todo .dot {
+  background-color: var(--kanban-todo);
+}
+
+.in_progress .dot {
+  background-color: var(--kanban-progress);
+}
+
+.completed .dot {
+  background-color: var(--kanban-completed);
+}
+
+.columnTitle h3 {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 var(--spacing-sm);
+  border-radius: var(--radius-xl);
+  background-color: var(--bg-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+}
+
+.columnContent {
+  flex: 1;
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  overflow-y: auto;
+}
+
+.cardWrapper {
+  animation: slideUp var(--transition-normal) forwards;
+  opacity: 0;
+}
+
+.emptyState {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl);
+}
+
+.emptyState p {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

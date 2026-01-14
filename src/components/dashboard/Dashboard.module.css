@@ -1,0 +1,11 @@
+.dashboard {
+  min-height: 100vh;
+}
+
+.section {
+  margin-bottom: var(--spacing-lg);
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}

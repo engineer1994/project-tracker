@@ -1,0 +1,52 @@
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background-color: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.toggle:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.toggle:focus {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 2px;
+}
+
+.iconWrapper {
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+  transform: scale(0.8) rotate(-30deg);
+  transition: all var(--transition-normal);
+}
+
+.icon.active {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.sunIcon {
+  color: var(--warning);
+}
+
+.moonIcon {
+  color: var(--accent-blue);
+}

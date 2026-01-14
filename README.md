@@ -2,8 +2,6 @@
 
 A desktop application for tracking projects and tasks with a Kanban-style interface. Built with React, TypeScript, and Electron, using Microsoft Excel as the data backend for easy data portability and backup.
 
-![Project Tracker Screenshot](docs/screenshot.png)
-
 ## Features
 
 - **Kanban Board**: Visual project management with To Do, In Progress, and Completed columns
@@ -34,7 +32,7 @@ Download the latest installer from the [Releases](../../releases) page and run `
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/project-tracker.git
+   git clone https://github.com/engineer1994/project-tracker.git
    cd project-tracker
    ```
 

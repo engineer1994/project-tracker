@@ -190,6 +190,19 @@ function writeData(projects) {
   const filePath = initializeDataFile();
 
   try {
+    // Read existing workbook to preserve Settings sheet
+    let existingSettings = null;
+    if (fs.existsSync(filePath)) {
+      try {
+        const existingWorkbook = XLSX.readFile(filePath);
+        if (existingWorkbook.Sheets['Settings']) {
+          existingSettings = existingWorkbook.Sheets['Settings'];
+        }
+      } catch (e) {
+        console.log('Could not read existing settings, will create new');
+      }
+    }
+
     const workbook = XLSX.utils.book_new();
 
     // Prepare projects data (without tasks array)
@@ -260,6 +273,19 @@ function writeData(projects) {
 
     XLSX.utils.book_append_sheet(workbook, projectsSheet, 'Projects');
     XLSX.utils.book_append_sheet(workbook, tasksSheet, 'Tasks');
+
+    // Preserve existing Settings sheet or create empty one
+    if (existingSettings) {
+      XLSX.utils.book_append_sheet(workbook, existingSettings, 'Settings');
+    } else {
+      const settingsData = [
+        ['key', 'value'],
+        ['userName', ''],
+        ['userInitials', '']
+      ];
+      const settingsSheet = XLSX.utils.aoa_to_sheet(settingsData);
+      XLSX.utils.book_append_sheet(workbook, settingsSheet, 'Settings');
+    }
 
     // Write the file
     XLSX.writeFile(workbook, filePath);

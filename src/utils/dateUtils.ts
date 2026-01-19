@@ -1,10 +1,18 @@
 import type { ScheduleStatus } from '../types';
 
 /**
+ * Parse a date string (YYYY-MM-DD) as local date to avoid timezone issues
+ */
+function parseLocalDate(dateString: string): Date {
+  const [year, month, day] = dateString.split('-').map(Number);
+  return new Date(year, month - 1, day);
+}
+
+/**
  * Format a date string to a readable format
  */
 export function formatDate(dateString: string): string {
-  const date = new Date(dateString);
+  const date = parseLocalDate(dateString);
   return date.toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',
@@ -16,7 +24,7 @@ export function formatDate(dateString: string): string {
  * Format a date string to a short format
  */
 export function formatDateShort(dateString: string): string {
-  const date = new Date(dateString);
+  const date = parseLocalDate(dateString);
   return date.toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',
@@ -29,8 +37,7 @@ export function formatDateShort(dateString: string): string {
 export function getDaysUntil(dateString: string): number {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  const targetDate = new Date(dateString);
-  targetDate.setHours(0, 0, 0, 0);
+  const targetDate = parseLocalDate(dateString);
   const diffTime = targetDate.getTime() - today.getTime();
   return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 }
